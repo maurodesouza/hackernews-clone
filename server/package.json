@@ -4,12 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/index" 
+    "start": "nodemon src/index",
+    "db": "node src/script"
   },
   "dependencies": {
+    "@prisma/client": "2.3.0",
     "graphql-yoga": "^1.18.3"
   },
   "devDependencies": {
+    "@prisma/cli": "2.3.0",
     "nodemon": "^2.0.4"
   }
 }
