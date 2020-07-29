@@ -1,62 +1,53 @@
 const { GraphQLServer } = require('graphql-yoga');
+const { PrismaClient } = require('@prisma/client')
+
 const { resolve } = require('path');
 
-let links = [];
-
-let idCount = links.length;
+const prisma = new PrismaClient()
 
 const resolvers = {
   Query: {
     info: () => `This is the API of a Hackernews Clone`,
-    feed: () => links,
-    link: (parent, args) => links.find(link => Number(link.id) === Number(args.linkId)),
+
+    feed: (parent, args, context) => context.prisma.link.findMany(),
+
+    link: (parent, args, context) => context.prisma.link.findOne({ where: { id: Number(args.linkId) } }),
   },
 
   Mutation: {
-    post: (parent, args) => {
-       const link = {
-        id: idCount++,
-        description: args.description,
-        url: args.url,
-      };
-
-      links.push(link);
-
-      return link;
+    post: (parent, args, context, info) => {
+      const newLink = context.prisma.link.create({
+        data: {
+          url: args.url,
+          description: args.description,
+        },
+      })
+      return newLink
     },
 
-    updateLink: (parent, args) => {
-      let updatedLink = null
-      
+    updateLink: (parent, args, context) => {
       const { linkId, ...rest } = args;
-
-      links = links.map(link => {
-        if (Number(link.id) === Number(linkId)) {
-
-          updatedLink = {
-            ...link,
-            ...rest
-          };
-
-          return updatedLink
-        }
-
-        return link;
-      })
-
-     return updatedLink;
-   },
-
-    deleteLink: (parent, args) => {
-      let deletedLink = null;
   
-      links = links.filter(link => {
-        if (Number(link.id) !== Number(args.linkId)) return;
-
-        deletedLink = link;
+      const updatedLink = context.prisma.link.update({
+        where: {
+          id: Number(linkId),
+        },
+        data: {
+          ...rest,
+        },
       });
 
-      return deletedLink;
+      return updatedLink;
+    },
+
+    deleteLink: (parent, args, context) => {
+      const deletedLInk = context.prisma.link.delete({
+        where: {
+          id: Number(args.linkId),
+        },
+      });
+
+      return deletedLInk;
     },
   },
 };
@@ -64,6 +55,9 @@ const resolvers = {
 const server = new GraphQLServer({
   typeDefs: resolve(__dirname, 'schema.graphql'),
   resolvers,
+  context: {
+    prisma,
+  },
 });
 
 server.start(() => console.log(`Server is running on http://localhost:4000`));
