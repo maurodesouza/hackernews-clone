@@ -1,11 +1,14 @@
 const { GraphQLServer } = require('graphql-yoga');
 const { PrismaClient } = require('@prisma/client');
+const { PubSub } = require('graphql-yoga');
+
 
 const resolvers = require('./resolvers');
 
 const { resolve } = require('path');
 
 const prisma = new PrismaClient();
+const pubsub = new PubSub();
 
 const server = new GraphQLServer({
   typeDefs: resolve(__dirname, 'schema.graphql'),
@@ -13,6 +16,7 @@ const server = new GraphQLServer({
   context: request => ({
     ...request,
     prisma,
+    pubsub,
   }),
 });
 
