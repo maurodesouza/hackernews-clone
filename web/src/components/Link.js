@@ -9,8 +9,6 @@ import { timeDifferenceForDate } from '../utils'
 const Link = ({ link, index, updateStoreAfterVote }) => {
   const authToken = localStorage.getItem(AUTH_TOKEN);
 
-  const _voteForLink = () => console.log('Clicou')
-
   const VOTE_MUTATION = gql`
     mutation VoteMutation($linkId: ID!) {
       vote(linkId: $linkId) {

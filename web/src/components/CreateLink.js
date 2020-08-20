@@ -18,8 +18,19 @@ const CreateLink = () => {
     mutation PostMutation($description: String!, $url: String!) {
       post(description: $description, url: $url) {
         id
+        createdAt
         url
         description
+        postedBy {
+          id
+          name
+        }
+        votes {
+          id
+          user {
+            id
+          }
+        }
       }
     }
   `
@@ -47,20 +58,20 @@ const CreateLink = () => {
         variables={{ description, url }}
         onCompleted={() => history.push('/new/1')}
         update={(store, { data: { post } }) => {
-          const first = LINKS_PER_PAGE
+          const take = LINKS_PER_PAGE
           const skip = 0
 
-          const orderBy = 'createdAt_DESC'
+          const orderBy = { createdAt: 'desc' }
           const data = store.readQuery({
             query: FEED_QUERY,
-            variables: { first, skip, orderBy }
+            variables: { take, skip, orderBy }
           })
 
           data.feed.links.unshift(post)
           store.writeQuery({
             query: FEED_QUERY,
             data,
-            variables: { first, skip, orderBy }
+            variables: { take, skip, orderBy }
           })
         }}
       >
