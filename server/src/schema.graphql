@@ -1,3 +1,5 @@
+scalar Date
+
 type Query {
   info: String!
   feed(filter: String, skip: Int, take: Int, orderBy: LinkOrderByInput): Feed!
@@ -44,6 +46,7 @@ type Vote {
 
 type Link {
   id: ID!
+  createdAt: Date!
   description: String!
   url: String!
   postedBy: User
