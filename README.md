@@ -5,28 +5,20 @@
 <h1 align="center">Hackernews Clone</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/maurodesouza/hackernews-clone?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/maurodesouza/hackernews-clone?color=ff6600">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/maurodesouza/hackernews-clone?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/maurodesouza/hackernews-clone?color=ff6600">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/maurodesouza/hackernews-clone?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/maurodesouza/hackernews-clone?color=ff6600">
 
-  <img alt="License" src="https://img.shields.io/github/license/maurodesouza/hackernews-clone?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/maurodesouza/hackernews-clone?color=ff6600">
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/maurodesouza/hackernews-clone?color=56BEB8" /> -->
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/maurodesouza/hackernews-clone?color=ff6600" /> -->
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/maurodesouza/hackernews-clone?color=56BEB8" /> -->
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/maurodesouza/hackernews-clone?color=ff6600" /> -->
 
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/maurodesouza/hackernews-clone?color=56BEB8" /> -->
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/maurodesouza/hackernews-clone?color=ff6600" /> -->
 </p>
-
-<!-- Status -->
-
-<!-- <h4 align="center"> 
-	🚧  Hackernews Clone 🚀 Under construction...  🚧
-</h4> 
-
-<hr> -->
 
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
